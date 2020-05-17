@@ -16,6 +16,13 @@
 
 		<app.runtime>4.2.2-hf2</app.runtime>
 		<mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
+		<anypoint.username>ramkeys</anypoint.username>
+		<anypoint.password>R@m143</anypoint.password>
+		<cloudhub.environment>Sandbox</cloudhub.environment>
+		<cloudhub.app>dummy-employees</cloudhub.app>
+		<cloudhub.bg>25445468786</cloudhub.bg>
+		<cloudhub.worker>Micro</cloudhub.worker>
+		<cloudhub.workers>1</cloudhub.workers>
 	</properties>
 
 	<build>
