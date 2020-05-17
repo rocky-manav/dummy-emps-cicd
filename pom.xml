@@ -50,7 +50,7 @@
     <!-- Environment Parameter -->
       			    <environment>${cloudhub.environment}</environment>
       			    <applicationName>${cloudhub.app}</applicationName>
-     			    <businessGroup>${cloudhub.bg}</businessGroup>
+     			  <!--   <businessGroup>${cloudhub.bg}</businessGroup>  -->
       			    <workerType>${cloudhub.worker}</workerType>
       			    <workers>${cloudhub.workers}</workers>
      			  </cloudHubDeployment>
@@ -105,7 +105,7 @@
             <layout>default</layout>
             <url>https://repository.mulesoft.org/releases/</url>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
