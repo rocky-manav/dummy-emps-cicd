@@ -1,0 +1,10 @@
+anypoint:
+       username: "ramkeys"
+       password: "R@m143"
+       
+cloudhub:
+        environment: "Sandbox"
+        app: "dummy-employees"
+        bg: 25445468786
+        worker: "Micro"
+        workers: 1
