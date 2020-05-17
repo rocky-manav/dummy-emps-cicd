@@ -7,4 +7,4 @@ cloudhub:
         app: "dummy-employees"
         bg: "25445468786"
         worker: "Micro"
-        workers: "1"
+        workers: 1
