@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="abd51262-ca15-4e8d-8a5a-bb32094ab4da" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
@@ -13,6 +14,14 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	<flow name="dummy-employeesFlow" doc:id="c1bd0875-1aa6-418b-80fa-28d8d2925392" >
 		<http:listener doc:name="Listener" doc:id="f0153659-2617-426c-a6e2-56dd7b0c03ce" config-ref="HTTP_Listener_config" path="/"/>
 		<http:request method="CONNECT" doc:name="Request" doc:id="3f4b8659-5849-49b4-86d4-d320ab4379f6" config-ref="HTTP_Request_configuration" path="/api/v1/employees	"/>
+		<ee:transform doc:name="Transform Message" doc:id="c8feb190-e00d-4a11-9c81-e68f867de709" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+employees:payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
 		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="be34f268-d3a0-4439-861a-3ac240fe35e9" />
 		<logger level="INFO" doc:name="Logger" doc:id="fb444bff-e763-4167-b537-355be9ed03ef" message="#[payload]"/>
 	</flow>
