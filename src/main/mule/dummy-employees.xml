@@ -25,6 +25,6 @@ employees:payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="be34f268-d3a0-4439-861a-3ac240fe35e9" />
-		<logger level="INFO" doc:name="Logger" doc:id="fb444bff-e763-4167-b537-355be9ed03ef" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="fb444bff-e763-4167-b537-355be9ed03ef" message='#["Transformed to XML":payload]'/>
 	</flow>
 </mule>
