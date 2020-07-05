@@ -12,10 +12,14 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="c415ea61-4459-4f16-b896-d37469b94a66" >
 		<http:request-connection host="dummy.restapiexample.com" port="80" />
 	</http:request-config>
-	<api-gateway:autodiscovery apiId="16162812" doc:name="API Autodiscovery" doc:id="8ca1eaea-9438-46a8-8c6f-2848a24526ee" flowRef="dummy-employeesFlow" />
 	<flow name="dummy-employeesFlow" doc:id="c1bd0875-1aa6-418b-80fa-28d8d2925392" >
-		<http:listener doc:name="Listener" doc:id="f0153659-2617-426c-a6e2-56dd7b0c03ce" config-ref="HTTP_Listener_config" path="/"/>
-		<http:request method="GET" doc:name="Request" doc:id="3f4b8659-5849-49b4-86d4-d320ab4379f6" config-ref="HTTP_Request_configuration" path="/api/v1/employees"/>
+		<http:listener doc:name="Listener" doc:id="f0153659-2617-426c-a6e2-56dd7b0c03ce" config-ref="HTTP_Listener_config" path="/dummy"/>
+		<http:request method="GET" doc:name="Request" doc:id="3f4b8659-5849-49b4-86d4-d320ab4379f6" config-ref="HTTP_Request_configuration" path="/api/v1/employees">
+			<http:body ><![CDATA[#[%dw 2.0
+output application/json
+---
+payload]]]></http:body>
+		</http:request>
 		<ee:transform doc:name="Transform Message" doc:id="c8feb190-e00d-4a11-9c81-e68f867de709" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
